@@ -14,8 +14,8 @@ fisd.rename({"PREC":"Precinct"})
 # Valid as of Nov 5, 2025 11:20 AM
 fisd["Registered Voters"] = [3654, 4684, 3399, 4111, 3679, 1722, 2471]
 fisd["For"] = [228, 443, 475, 410, 363, 363,280]
-fisd["Against"] = [523, 1014, 1204, 1013, 1039, 1001, 725]
-fisd["Total"] = [751, 1457, 1679, 1423, 1402, 1364, 1005]
+fisd["Against"] = [295, 571, 729, 603, 676, 638, 445]
+fisd["Total"] = fisd["For"]+fisd["Against"]
 fisd["Turnout"] = ['30.4%', '30.4%', '28.3%', '28.8%', '25.9%', '26.6%', '27.9%']
 fisd["Margin"] = ((fisd["For"] - fisd["Against"]) / fisd["Total"]).apply(lambda x: f"{x:.1%}")
 
@@ -36,4 +36,6 @@ source_html = f'''
 # Add the title HTML to the map
 map.get_root().html.add_child(folium.Element(title_html))
 map.get_root().html.add_child(folium.Element(source_html))
+
+
 map.save("fisd_2025_precincts.html")
